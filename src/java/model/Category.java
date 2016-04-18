@@ -22,6 +22,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c"),
     @NamedQuery(name = "Category.findById", query = "SELECT c FROM Category c WHERE c.id = :id"),
     @NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name"),
+    @NamedQuery(name = "Category.findInformations", query = "SELECT i FROM Information i WHERE i.category = :category"),
     @NamedQuery(name = "Category.deleteAll", query = "DELETE FROM Category")})
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -54,7 +55,11 @@ public class Category implements Serializable {
     public Category(String name) {
         this.name = name;
     }
-    
+
+    public Category(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
     
     /*
     Getters

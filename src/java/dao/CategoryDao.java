@@ -5,7 +5,9 @@
  */
 package dao;
 
+import java.util.Collection;
 import model.Category;
+import model.Information;
 
 /**
  *
@@ -13,4 +15,11 @@ import model.Category;
  */
 public interface CategoryDao extends Dao<Category> {
     
+    /**
+     * Fetches all Informations in the category.
+     * 
+     * @param c The category to look up
+     * @return A container with all Information of the category
+     */
+    public Collection<Information> findInformations(Category c);
 }

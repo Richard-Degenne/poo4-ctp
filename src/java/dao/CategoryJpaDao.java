@@ -8,6 +8,7 @@ package dao;
 import java.util.Collection;
 import javax.persistence.EntityTransaction;
 import model.Category;
+import model.Information;
 
 /**
  *
@@ -49,5 +50,10 @@ public class CategoryJpaDao extends JpaDao<Category> implements CategoryDao {
     @Override
     public void close() {
         em.close();
+    }
+
+    @Override
+    public Collection<Information> findInformations(Category c) {
+        return em.createNamedQuery("Category.findInformations").setParameter("category", c).getResultList();
     }
 }

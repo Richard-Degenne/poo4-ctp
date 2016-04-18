@@ -22,4 +22,5 @@ public interface CategoryDao extends Dao<Category> {
      * @return A container with all Information of the category
      */
     public Collection<Information> findInformations(Category c);
+    public Information findMostRecentMainInformation(Category c);
 }

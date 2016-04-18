@@ -56,4 +56,18 @@ public class CategoryJpaDao extends JpaDao<Category> implements CategoryDao {
     public Collection<Information> findInformations(Category c) {
         return em.createNamedQuery("Category.findInformations").setParameter("category", c).getResultList();
     }
+
+    @Override
+    public Information findMostRecentMainInformation(Category c) {
+        Information result = null;
+        for(Information i : findInformations(c)) {
+            if(result == null)
+                result = i;
+            else if(i.getInformationType() == Information.MainInformation && i.getReleaseDate().compareTo(result.getReleaseDate()) > 0)
+                result = i;
+        }
+        return result;
+    }
+    
+    
 }
